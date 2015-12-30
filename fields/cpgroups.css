@@ -1,0 +1,36 @@
+.cpicon-rename, .cpicon-remove {
+	float: right;
+	display: block;
+	width: 16px;
+	height: 16px;
+	text-indent: 18px;
+	margin-left: 3px;
+	overflow: hidden;
+}
+.cpgroup-add {
+	font-weight: bold;
+	color: #666666;
+}
+.cpicon-rename {
+	background-image: url(edit.png);
+}
+.cpicon-remove {
+	background-image: url(delete.png);
+}
+
+.cpgroup-slider {
+	border: 1px solid #CCCCCC !important;
+	padding-left: 2px;
+	clear: both;
+}
+.pane-sliders .panel h3.cpgroup-toggler, h3.cpgroup-toggler {
+	background-color: #F4F4F4;
+	margin: 3px 0 0 0;
+	border: 1px solid #CCCCCC;
+	min-height: 12px;
+	padding: 3px;
+	clear: both;
+}
+div.cpgroupsfield input, div.cpgroupsfield textarea {
+	min-width: 18em;
+}
