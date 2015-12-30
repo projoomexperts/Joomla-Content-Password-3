@@ -9,7 +9,7 @@ The purpose of this plugin is to password protect joomla article.
 
 To use this plugin.
 
-Download
+<a href="https://github.com/projoomexperts/Joomla-Content-Password-3/archive/master.zip">Download</a>
 
 Install it using joomla extension installer.
 
