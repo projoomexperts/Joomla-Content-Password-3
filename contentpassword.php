@@ -109,6 +109,12 @@ class plgContentContentPassword extends JPlugin
 								case 'allowgroup':
 									if (!empty($value)) $allowgroups[] = $value;
 									break;
+								case 'allowgroup':
+									if (!empty($value)) $allowgroups[] = $value;
+									break;
+								case 'aclgroup':
+									if(!$access && $this->_getGroupName($value)) $access = true;
+									break;
 							}
 						}
 					}
@@ -198,6 +204,9 @@ class plgContentContentPassword extends JPlugin
 							case 'allowgroup':
 								if (!empty($value)) $allowgroups[] = $value;
 								break;
+							case 'aclgroup':
+								if(!$access && $this->_getGroupName($value)) $access = true;
+								break;
 						}
 					}
 				}
@@ -219,6 +228,29 @@ class plgContentContentPassword extends JPlugin
 		}
 	
 	}
+
+
+	private function _getGroupName($group_name){
+    		$db = JFactory::getDBO();
+    		$db->setQuery($db->getQuery(true)->select('*')->from("#__usergroups"));
+    		$groups = $db->loadRowList();
+	        $user = JFactory::getUser();
+		$groups_acl = $user->groups;
+		//$groups_acl = $user->getAuthorisedViewLevels();
+		//echo "Value: $group_name";
+    		foreach ($groups as $group) {
+			foreach ($groups_acl as $group_acl) {				
+        				if ($group[0] == $group_acl && $group_name == $group[4]) { // $group[4] holds the name of current group	
+						//return $group[4];        // $group[0] holds group ID
+            					//echo "| $group[0] $group[4] % $group_acl |";
+						return true;
+						}
+			}
+		}
+    		return false; // return false if group name not found
+	}
+
+
 	
 	private function _getDialog($description, $title, $error = FALSE) {
 		self::$uniqid++;
